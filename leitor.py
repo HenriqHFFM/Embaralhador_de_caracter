@@ -4,11 +4,11 @@ import random
 # Função de troca de caracteres
 def trocar_letras(texto):
     mapeamento = {
-        'A': ['Ǟ', 'Ⱥ', 'Ḁ'],
-        'B': ['Ḃ', 'Ḅ', 'Ɓ'],
+        'A': ['Ȧ', 'Ⱥ', 'Ḁ'],
+        'B': ['В', 'Ḅ', 'Ɓ'],
         'C': ['Ƈ', 'Ć', 'Č'],
         'D': ['Ḑ', 'Ḓ', 'Ɖ'],
-        'E': ['Ȩ', 'Ḙ', 'Ě'],
+        'E': ['Ё', 'Ḙ', 'Ě'],
         'F': ['Ḟ', 'Ƒ'],
         'G': ['Ġ', 'Ḡ'],
         'H': ['Ȟ', 'Ḥ'],
@@ -18,7 +18,7 @@ def trocar_letras(texto):
         'L': ['Ḷ', 'Ḻ'],
         'M': ['Ḿ', 'Ṁ'],
         'N': ['Ṅ', 'Ň', 'Ɲ'],
-        'O': ['Ő', 'Ǫ', 'Ṍ'],
+        'O': ['Ő', 'Ȫ', 'Ṍ'],
         'P': ['Ṕ', 'Ṗ', 'Ƥ'],
         'Q': ['Ꝗ', 'Ꝙ'],
         'R': ['Ȑ', 'Ṙ', 'Ŕ'],
@@ -27,15 +27,15 @@ def trocar_letras(texto):
         'U': ['Ű', 'Ǜ', 'Ṳ'],
         'V': ['Ṽ', 'Ṿ', 'Ʋ'],
         'W': ['Ẃ', 'Ẅ', 'Ŵ'],
-        'X': ['Ẍ', 'Ẋ'],
+        'X': ['Ẍ', 'Х'],
         'Y': ['Ẏ', 'Ŷ', 'Ÿ'],
         'Z': ['Ż', 'Ẑ', 'Ƶ'],
 
-        'a': ['ǡ', 'à'],
+        'a': ['ȧ', 'ӓ'],
         'b': ['ƀ', 'ƃ', 'ḅ'],
         'c': ['ċ', 'č', 'ç'],
         'd': ['ḓ', 'ḑ', 'đ'],
-        'e': ['ȩ', 'ě', 'ḙ'],
+        'e': ['ё', 'ě', 'ḙ'],
         'f': ['ƒ', 'ḟ', 'ᵮ'],
         'g': ['ĝ', 'ġ', 'ģ'],
         'h': ['ḩ', 'ḥ', 'ĥ'],
@@ -45,7 +45,7 @@ def trocar_letras(texto):
         'l': ['ḷ', 'ł', 'ŀ'],
         'm': ['ṁ', 'ṃ', 'ᵯ'],
         'n': ['ṅ', 'ň', 'ñ'],
-        'o': ['ọ', 'ő', 'ǫ'],
+        'o': ['ọ', 'ȫ', 'ǫ'],
         'p': ['ṕ', 'ṗ'],
         'q': ['ɋ', 'ꝗ'],
         'r': ['ŕ', 'ṙ', 'ȑ'],
@@ -69,11 +69,10 @@ def trocar_letras(texto):
 # Função principal
 def copiar_arquivo():
     try:
-        # Solicitar o caminho completo do arquivo ao usuário
+        # Solicitar o caminho 
         caminho_original = input("Digite o caminho completo do arquivo .txt que deseja copiar: ")
-        caminho_original = os.path.abspath(caminho_original)  # Converter para caminho absoluto
+        caminho_original = os.path.abspath(caminho_original) 
 
-        # Verificar se o arquivo existe
         if not os.path.exists(caminho_original):
             print("Erro: O arquivo especificado não foi encontrado.")
             return
@@ -85,15 +84,13 @@ def copiar_arquivo():
         # Substituir letras no conteúdo
         conteudo_modificado = trocar_letras(conteudo)
 
-        # Solicitar o caminho e o nome para o novo arquivo
-        caminho_copia = input("Digite o caminho e o nome do novo arquivo .txt (ex: C:\\copia.txt): ")
-        caminho_copia = os.path.abspath(caminho_copia)  # Converter para caminho absoluto
+        caminho_copia = os.path.abspath(caminho_original)  
 
-        # Criar o novo arquivo e escrever o conteúdo modificado nele
+        # Criar o novo arquivo e escrever o conteúdo nele
         with open(caminho_copia, 'w', encoding='utf-8') as arquivo_copia:
             arquivo_copia.write(conteudo_modificado)
 
-        print(f"Arquivo copiado e modificado com sucesso para: {caminho_copia}")
+        print(f"Pronto")
 
     except Exception as e:
         print(f"Ocorreu um erro: {e}")
